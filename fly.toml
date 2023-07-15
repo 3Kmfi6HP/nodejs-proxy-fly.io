@@ -7,6 +7,7 @@ kill_timeout = 5
 
 [env]
 PORT = "7860"
+UUID = "d342d11e-d424-4583-b36e-524ab1f0afa4"
 
 [[services]]
 internal_port = 7860
