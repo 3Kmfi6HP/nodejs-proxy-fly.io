@@ -1,15 +1,15 @@
 # fly.toml file generated for holy-grass-8371 on 2021-04-06T14:31:33-04:00
 
-app = "hello-rust"
+app = "hello-nodejs-proxy"
 
 kill_signal = "SIGINT"
 kill_timeout = 5
 
 [env]
-PORT = "8080"
+PORT = "7860"
 
 [[services]]
-internal_port = 8080
+internal_port = 7860
 protocol = "tcp"
 
 [services.concurrency]
@@ -18,7 +18,7 @@ soft_limit = 20
 
 [[services.ports]]
 handlers = ["http"]
-port = "80"
+port = "7860"
 
 [[services.ports]]
 handlers = ["tls", "http"]
@@ -27,6 +27,6 @@ port = "443"
 [[services.tcp_checks]]
 grace_period = "1s"
 interval = "15s"
-port = "8080"
+port = "7860"
 restart_limit = 6
 timeout = "2s"
