@@ -10,24 +10,25 @@ PORT = "7860"
 UUID = "d342d11e-d424-4583-b36e-524ab1f0afa4"
 
 [[services]]
-internal_port = 7860
 protocol = "tcp"
+internal_port = 7860
+processes = ["app"]
 
+[[services.ports]]
+port = 7860
+handlers = ["http"]
+force_https = true
+
+[[services.ports]]
+port = 443
+handlers = ["tls", "http"]
 [services.concurrency]
+type = "connections"
 hard_limit = 25
 soft_limit = 20
 
-[[services.ports]]
-handlers = ["http"]
-port = "7860"
-
-[[services.ports]]
-handlers = ["tls", "http"]
-port = "443"
-
 [[services.tcp_checks]]
-grace_period = "1s"
 interval = "15s"
-port = "7860"
-restart_limit = 6
 timeout = "2s"
+grace_period = "1s"
+restart_limit = 0
